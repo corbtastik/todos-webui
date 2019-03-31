@@ -1,0 +1,10 @@
+---
+applications:
+- name: todos-webapp
+  memory: 1G
+  routes:
+  - route: todos-webapp.cfapps.io
+  path: target/todos-webapp-1.0.0.SNAP.jar
+  buildpack: java_buildpack
+  env:
+    SITE_TITLE: 'Todos WebApp'
