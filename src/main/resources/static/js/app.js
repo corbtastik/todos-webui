@@ -3,7 +3,7 @@
 (function (exports) {
     'use strict';
     Vue.use(VueResource);
-    var filters = {
+    const filters = {
         all: function (todos) {
             return todos;
         },
@@ -71,7 +71,7 @@
                 return word + (count === 1 ? '' : 's');
             },
             addTodo: function () {
-                var value = this.newTodo && this.newTodo.trim();
+                const value = this.newTodo && this.newTodo.trim();
                 if (!value) {
                     return;
                 }
@@ -82,31 +82,34 @@
                 this.newTodo = '';
             },
             createTodo: function(todo) {
-                let self = this;
+                const self = this;
                 if(!self.offline) {
                     Vue.http.post('/todos/', {
                         title: todo.title,
                         completed: todo.completed
                     }).then(response => {
-                        self.todos.push(response.body);
+                        self.todos.unshift(response.body);
                     });
                 } else {
-                    self.todos.push(todo);
+                    self.todos.unshift(todo);
                 }
             },
             removeTodo: function (todo) {
                 let self = this;
                 if(!self.offline) {
                     Vue.http.delete( '/todos/' + todo.id).then(() => {
-                        var index = self.todos.indexOf(todo);
+                        const index = self.todos.indexOf(todo);
                         self.todos.splice(index, 1);
                     });
                 } else {
-                    var index = self.todos.indexOf(todo);
+                    const index = self.todos.indexOf(todo);
                     self.todos.splice(index, 1);
                 }
             },
             editTodo: function (todo) {
+                if(todo.completed) {
+                    return;
+                }
                 this.beforeEditCache = todo.title;
                 this.editedTodo = todo;
             },
@@ -134,7 +137,7 @@
             Vue.http.get('/todos/').then(response => {
                 let list = JSON.parse(response.bodyText);
                 list.forEach(item => {
-                    self.todos.push(item);
+                    self.todos.unshift(item);
                 });
                 console.log("INFO /todos is online, saving to API");
             }, response => {

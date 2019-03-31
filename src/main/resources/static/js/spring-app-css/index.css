@@ -5,6 +5,11 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+#todoapp > section > section > ul > li.todo.editing > input:not([type="checkbox"]):not([type="radio"]) {
+    background-color: #0B243C;
+    color: #7EE1D3;
+}
+
 button {
 	margin: 0;
 	padding: 0;
@@ -160,20 +165,15 @@ body {
 	border-bottom: 1px solid #0B243C;
 }
 
-/*.todo-list li:last-child {*/
-	/*border-bottom: none;*/
-/*}*/
-
 .todo-list li.editing {
-	border-bottom: none;
+    color: inherit;
 	padding: 0;
 }
 
 .todo-list li.editing .edit {
 	display: block;
-	width: calc(100% - 43px);
-	padding: 12px 16px;
-	margin: 0 0 0 43px;
+    padding: 12px 16px;
+    margin: 0;
 }
 
 .todo-list li.editing .view {
@@ -230,11 +230,6 @@ body {
     width: 40px;
     height: 40px;
     margin: auto 0;
-    /*font-size: 30px;*/
-    /*background-color: red;*/
-    /*margin-bottom: 11px;*/
-    /*transition: color 0.2s ease-out;*/
-    /*border-radius: 50%;*/
     display: inline-block;
     background-image: url('delete.svg');
     background-repeat: no-repeat;
@@ -336,7 +331,7 @@ html .clear-completed:active {
 .info {
 	margin: 65px auto 0;
 	color: #C9EEE9;
-	font-size: 12px;
+	font-size: 18px;
 	text-align: center;
 }
 

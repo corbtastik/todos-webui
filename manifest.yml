@@ -1,10 +1,6 @@
 ---
 applications:
-- name: todos-webapp
+- name: todos-webui
   memory: 1G
-  routes:
-  - route: todos-webapp.cfapps.io
   path: target/todos-webapp-1.0.0.SNAP.jar
-  buildpack: java_buildpack
-  env:
-    SITE_TITLE: 'Todos WebApp'
+  buildpack: java_buildpack_offline
