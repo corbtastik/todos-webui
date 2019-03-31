@@ -2,7 +2,7 @@
 
 // import { warn } from 'core/util/index'
 
-// this will be preserved during build
+// this will be preserved during dist
 // $flow-disable-line
 const acorn = require('acorn') // $flow-disable-line
 const walk = require('acorn/dist/walk') // $flow-disable-line

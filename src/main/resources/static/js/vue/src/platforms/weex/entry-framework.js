@@ -1,6 +1,6 @@
 /* @flow */
 
-// this will be preserved during build
+// this will be preserved during dist
 // $flow-disable-line
 const VueFactory = require('./factory')
 
