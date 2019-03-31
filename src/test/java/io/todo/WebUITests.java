@@ -1,4 +1,4 @@
-package io.cfapp;
+package io.todo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SiteApplicationTests {
+public class WebUITests {
 
 	@Test
 	public void contextLoads() {
