@@ -3,4 +3,4 @@ applications:
 - name: todos-webui
   memory: 1G
   path: target/todos-webapp-1.0.0.SNAP.jar
-  buildpack: java_buildpack_offline
+  buildpack: java_buildpack
