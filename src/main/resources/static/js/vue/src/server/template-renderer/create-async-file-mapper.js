@@ -2,7 +2,7 @@
 
 /**
  * Creates a mapper that maps components used during a server-side render
- * to async chunk files in the client-side build, so that we can inline them
+ * to async chunk files in the client-side dist, so that we can inline them
  * directly in the rendered HTML to avoid waterfall requests.
  */
 

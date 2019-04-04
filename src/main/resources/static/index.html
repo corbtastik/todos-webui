@@ -6,14 +6,8 @@
     <meta charset="utf-8">
     <title>Vue.js • TodoMVC</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="js/todomvc-common/base.css">
     <link rel="stylesheet" href="js/spring-app-css/index.css">
-    <link rel="stylesheet" href="css/main.css">
-    <style> [v-cloak] {
-        display: none;
-    } </style>
+    <style> [v-cloak] { display: none; } </style>
 </head>
 <body>
 <div id="todoapp">
@@ -65,11 +59,6 @@
                 <li><a href="#/all" :class="{selected: visibility == 'all'}">All</a></li>
                 <li><a href="#/active" :class="{selected: visibility == 'active'}">Active</a></li>
                 <li><a href="#/completed" :class="{selected: visibility == 'completed'}">Completed</a></li>
-                <!--<li>-->
-                <!--<button class="clear-completed" @click="removeCompleted" v-show="todos.length > remaining">-->
-                <!--Clear-->
-                <!--</button>-->
-                <!--</li>-->
             </ul>
         </footer>
     </section>
@@ -80,8 +69,7 @@
     </footer>
 </div>
 <script src="js/vue-resource/dist/vue-resource.min.js"></script>
-<script src="js/todomvc-common/base.js"></script>
-<script src="js/director/build/director.js"></script>
+<script src="js/director/dist/director.js"></script>
 <script src="js/vue/dist/vue.js"></script>
 <script src="js/app.js"></script>
 <script src="js/routes.js"></script>

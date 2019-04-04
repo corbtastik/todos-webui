@@ -1,7 +1,7 @@
-# Todos WebApp
+# Todos WebUI
 
-Small demo Todo application implemented in...
+Vue.js, HTML, CSS wrapped as a Spring Boot app.
  
 * [Spring Boot](https://spring.io/projects/spring-boot) for app bits
-* wit [Mustache](https://mustache.github.io/) for web templating
-* and [Bulma](https://bulma.io) for frontend layouts in flexbox
+
+
