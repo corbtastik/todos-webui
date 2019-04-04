@@ -2,5 +2,19 @@
 applications:
 - name: todos-webui
   memory: 1G
-  path: target/todos-webapp-1.0.0.SNAP.jar
+  path: target/todos-webui-1.0.0.SNAP.jar
   buildpack: java_buildpack_offline
+  env:
+    SKIP_SSL_VALIDATION: "true"
+    CLIENT_ID: __REPLACE_ME__ 
+    CLIENT_SECRET: __REPLACE_ME__ 
+    CLIENT_NAME: __REPLACE_ME__
+    AUTHORIZATION_GRANT_TYPE: authorization_code
+    REDIRECT_URI_TEMPLATE: "https://todos-webui.apps.retro.io/login/oauth2/code/{registrationId}"
+    CLIENT_AUTHENTICATION_METHOD: basic
+    SCOPE: "openid, profile, todo.read, todo.write"
+    AUTHORIZATION_URI: "https://sso-auth.login.sys.retro.io/oauth/authorize"
+    TOKEN_URI: "https://sso-auth.login.sys.retro.io/oauth/token"
+    USER_INFO_URI: "https://sso-auth.login.sys.retro.io/userinfo"
+    USER_NAME_ATTRIBUTE: sub
+    JWK_SET_URI: "https://sso-auth.login.sys.retro.io/token_keys"

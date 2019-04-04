@@ -17,25 +17,19 @@
 </head>
 <body>
 <div id="todoapp">
-    <div style="float: right" th:fragment="logout" sec:authorize="isAuthenticated()">
-        <div style="float:left">
-            <span style="font-weight:bold">User: </span><span sec:authentication="name"></span>
-        </div>
-        <div style="float:none">&nbsp;</div>
-        <div style="float:right">
-            <form action="#" th:action="@{/logout}" method="post">
-                <input type="submit" value="Logout" />
-            </form>
-        </div>
-    </div>
-    <h1>OAuth 2.0 Login with Spring Security</h1>
-    <div>
-        You are successfully logged in <span style="font-weight:bold" th:text="${userName}"></span>
-        via the OAuth 2.0 Client <span style="font-weight:bold" th:text="${clientName}"></span>
-    </div>
     <section class="todoapp" v-cloak>
         <header class="header">
             <h1>todos</h1>
+            <section class="userinfo" style="float: right" th:fragment="logout" sec:authorize="isAuthenticated()">
+                <div style="float:right">
+                    <form action="#" th:action="@{/logout}" method="post">
+                        <input class="logout" type="submit" value="Logout" />
+                    </form>
+                </div>
+                <div>
+                    Successfully logged in <span style="font-weight:bold" th:text="${userName}"></span>
+                </div>
+            </section>
             <input id="new-todo" class="new-todo" autofocus autocomplete="off" placeholder="Boot something today..."
                    v-model="newTodo" @keyup.enter="addTodo" maxlength="32">
         </header>
