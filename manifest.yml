@@ -8,7 +8,7 @@ applications:
     SKIP_SSL_VALIDATION: "true"
     CLIENT_ID: __REPLACE_ME__
     CLIENT_SECRET: __REPLACE_ME__
-    CLIENT_NAME: __REPLACE_ME__
+    CLIENT_NAME: uaa
     AUTHORIZATION_GRANT_TYPE: authorization_code
     REDIRECT_URI_TEMPLATE: "https://todos-webui.apps.retro.io/login/oauth2/code/{registrationId}"
     CLIENT_AUTHENTICATION_METHOD: basic
