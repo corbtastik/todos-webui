@@ -3,6 +3,7 @@
 (function (exports) {
     'use strict';
     Vue.use(VueResource);
+
     const filters = {
         all: function (todos) {
             return todos;

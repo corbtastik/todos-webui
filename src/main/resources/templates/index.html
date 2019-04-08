@@ -1,13 +1,10 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>Vue.js • TodoMVC</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="js/spring-app-css/index.css">
     <style> [v-cloak] {
         display: none;
@@ -18,14 +15,14 @@
     <section class="todoapp" v-cloak>
         <header class="header">
             <h1>todos</h1>
-            <section class="userinfo" style="float: right" th:fragment="logout" sec:authorize="isAuthenticated()">
+            <section class="userinfo" style="float: right" th:fragment="logout">
                 <div style="float:right">
                     <form action="#" th:action="@{/logout}" method="post">
                         <input class="logout" type="submit" value="Logout" />
                     </form>
                 </div>
                 <div>
-                    Successfully logged in <span style="font-weight:bold" th:text="${userName}"></span>
+                    Successfully logged in <span style="font-weight:bold" th:text="${token}"></span>
                 </div>
             </section>
             <input id="new-todo" class="new-todo" autofocus autocomplete="off" placeholder="Boot something today..."
