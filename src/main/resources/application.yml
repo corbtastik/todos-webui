@@ -1,22 +1,3 @@
 spring:
   thymeleaf:
     cache: false
-  security:
-    oauth2:
-      client:
-        registration:
-          uaa:
-            client-id:  ${CLIENT_ID}
-            client-secret: ${CLIENT_SECRET}
-            client-authentication-method: ${CLIENT_AUTHENTICATION_METHOD}
-            authorization-grant-type: ${AUTHORIZATION_GRANT_TYPE}
-            redirect-uri-template: ${REDIRECT_URI_TEMPLATE}
-            scope: ${SCOPE}
-            client-name: ${CLIENT_NAME}
-        provider:
-          uaa:
-            authorization-uri: ${AUTHORIZATION_URI}
-            token-uri: ${TOKEN_URI}
-            user-info-uri: ${USER_INFO_URI}
-            user-name-attribute: ${USER_NAME_ATTRIBUTE}
-            jwk-set-uri: ${JWK_SET_URI}
