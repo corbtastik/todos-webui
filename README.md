@@ -1,7 +1,7 @@
 # Todos WebUI
 
-Vue.js, HTML, CSS wrapped as a Spring Boot app.
- 
+A sample frontend app wrapped in Spring Boot
+
 * [Spring Boot](https://spring.io/projects/spring-boot) for app bits
 * [Vue.js](https://vuejs.org/) for frontend, inspired by [TodoMVC Vue App](http://todomvc.com/examples/vue/), difference is this one is vendored as a Spring Boot app and calls a backing endpoint (``/todos``)
 
@@ -15,7 +15,7 @@ Spring Boot property handling makes it easy to implement custom properties, for 
 1. cd into project
 1. mvnw clean package
 1. modify ``manifest.yml`` for your cloudfoundry tastes (custom route perhaps?)
-1. login to PCF (or PWS)
+1. login to PCF (or [PWS](https://run.pivotal.io/))
 1. cf push (awwwweee yeah)
 
 To have data sent to the backend run this app with [todos-edge]() and access UI via the edge's published endpoint (See [todos-edge README](https://github.com/corbtastik/todos-edge)).
