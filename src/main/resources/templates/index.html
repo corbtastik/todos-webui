@@ -17,17 +17,6 @@
     <section class="todoapp" v-cloak>
         <header class="header">
             <h1>todos</h1>
-            <!--work in process with sso-->
-            <!--<section class="userinfo" style="float: right" th:fragment="logout">-->
-                <!--<div style="float:right">-->
-                    <!--<form action="#" th:action="@{/logout}" method="post">-->
-                        <!--<input class="logout" type="submit" value="Logout" />-->
-                    <!--</form>-->
-                <!--</div>-->
-                <!--<div>-->
-                    <!--Successfully logged in <span style="font-weight:bold" th:text="${userName}"></span>-->
-                <!--</div>-->
-            <!--</section>-->
             <input id="new-todo" class="new-todo" autofocus autocomplete="off" placeholder="Bread perhaps?"
                    v-model="newTodo" @keyup.enter="addTodo" maxlength="32">
         </header>
