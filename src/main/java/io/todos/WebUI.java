@@ -16,8 +16,6 @@ public class WebUI {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("userId", "corbs");
-        model.addAttribute("clientName", "corbs");
         model.addAttribute("userName", "corbs");
         return "index";
     }
