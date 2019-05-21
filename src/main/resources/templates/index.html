@@ -17,7 +17,7 @@
     <section class="todoapp" v-cloak>
         <header class="header">
             <h1>todos</h1>
-            <input id="new-todo" class="new-todo" autofocus autocomplete="off" placeholder="Bread perhaps?"
+            <input id="new-todo" class="new-todo" autofocus autocomplete="off" th:placeholder="${placeholder}"
                    v-model="newTodo" @keyup.enter="addTodo" maxlength="32">
         </header>
         <section class="main" v-show="todos.length">

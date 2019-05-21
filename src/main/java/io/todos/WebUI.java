@@ -1,5 +1,6 @@
 package io.todos;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
@@ -14,9 +15,13 @@ public class WebUI {
 		SpringApplication.run(WebUI.class, args);
 	}
 
+	@Value("${todos.webui.placeholder:cf push something?}")
+	private String placeholder;
+
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("userName", "corbs");
+        model.addAttribute("user", "Nacho Libre");
+        model.addAttribute("placeholder", placeholder);
         return "index";
     }
 }

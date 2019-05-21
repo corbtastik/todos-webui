@@ -7,14 +7,27 @@ Vue.js, HTML, CSS wrapped as a Spring Boot app.
 
 This application assumes the ``/todos`` endpoint is exposed from the same "origin".  Because of this its best to use this application behind the Todos-Edge which will serve as a gateway and single origin to the client for both loading ``todos-webui`` and for proxying API calls to ``/todos``.
 
-## Steps to run
+## Run on PCF
 
-1. fork this repo and clone
+1. Consider forking [this project](https://github.com/corbtastik/todos-webui) then clone to dev machine
+1. cd into project
 1. mvnw clean package
-1. modify ``manifest.yml``
-1. login to pcf and cf push
+1. modify ``manifest.yml`` for your cloudfoundry tastes (custom route perhaps?)
+1. login to PCF (or PWS)
+1. cf push (awwwweee yeah)
 
-Running this app without an edge service is fine, however the data will just be saved on the browser.  To have data sent to the backend run this app with [todos-edge]() and access through the edge's published endpoint (See todos-edge, README).
+To have data sent to the backend run this app with [todos-edge]() and access UI via the edge's published endpoint (See [todos-edge README](https://github.com/corbtastik/todos-edge)).
+
+Running this app without an edge is fine, however the data will just be saved to local browser storage and bark because you're not plugged up to the api.  In this case the app is essentially "vendoring" a frontend application ([vue.js](https://vuejs.org/),html,css) and serving it over the JVM instead of a plain-ole http-server (such as [apache-httpd](https://httpd.apache.org/) or [nginx](https://www.nginx.com/)).    
+
+## Local
+
+You can clone, build, run then access ``localhost:8080`` or change the port.
+
+```bash
+java -jar ./target/todos-webui-1.0.0.SNAP.jar \
+  --server.port=whatever
+``` 
 
 **WebUI running**
 
