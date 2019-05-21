@@ -7,6 +7,8 @@ Vue.js, HTML, CSS wrapped as a Spring Boot app.
 
 This application assumes the ``/todos`` endpoint is exposed from the same "origin".  Because of this its best to use this application behind the Todos-Edge which will serve as a gateway and single origin to the client for both loading ``todos-webui`` and for proxying API calls to ``/todos``.
 
+Spring Boot property handling makes it easy to implement custom properties, for example ``todos.webui.placeholder`` can be set to whatever you'd like and it will show up on the UI.
+
 ## Run on PCF
 
 1. Consider forking [this project](https://github.com/corbtastik/todos-webui) then clone to dev machine
