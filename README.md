@@ -2,7 +2,7 @@
 
 A sample frontend app wrapped in Spring Boot
 
-* [Spring Boot](https://spring.io/projects/spring-boot) for app bits
+* [Spring Boot](https://spring.io/projects/spring-boot) for app bits, using webflux runtime
 * [Vue.js](https://vuejs.org/) for frontend, inspired by [TodoMVC Vue App](http://todomvc.com/examples/vue/), difference is this one is vendored as a Spring Boot app and calls a backing endpoint (``/todos``)
 
 This application assumes the ``/todos`` endpoint is exposed from the same "origin".  Because of this its best to use this application behind the [todos-edge](https://github.com/corbtastik/todos-edge) which will serve as a gateway and single origin to the client for both loading ``todos-webui`` and for proxying API calls to ``/todos``.
