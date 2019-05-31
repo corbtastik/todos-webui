@@ -8,16 +8,16 @@
 		<version>2.1.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>io.cfapp</groupId>
+	<groupId>io.todos</groupId>
 	<artifactId>todos-webui</artifactId>
 	<version>1.0.0.SNAP</version>
 	<name>todos-webui</name>
-	<description>Todos Web App - Spring Boot with Mustache and Bulma css</description>
+	<description>Todos Web UI - Spring Boot + Vue.js + API enabled Todos UI</description>
 
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
-        <spring-cloud-services.version>2.1.2.RELEASE</spring-cloud-services.version>
+        <spring-cloud-services.version>2.1.1.RELEASE</spring-cloud-services.version>
     </properties>
 
 	<dependencies>

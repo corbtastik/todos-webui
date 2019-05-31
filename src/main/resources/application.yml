@@ -4,3 +4,8 @@ spring:
 todos:
   webui:
     placeholder: 'Bake Cup Cakes?'
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
