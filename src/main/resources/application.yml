@@ -1,9 +1,11 @@
 spring:
+  application:
+    name: 'todos-webui'
   thymeleaf:
     cache: false
 todos:
   webui:
-    placeholder: 'Bake Cup Cakes?'
+    placeholder: 'Time to wash the car'
 management:
   endpoints:
     web:
