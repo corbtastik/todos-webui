@@ -61,6 +61,17 @@
                 </ul>
             </footer>
         </section>
+        <section class="about-content">
+            <div>API enabled <a href="https://github.com/corbtastik/todos-webui">Todo WebUI</a></div>
+            <div>using <a href="https://spring.io/projects/spring-boot">Spring Boot</a> + <a href="https://vuejs.org">Vue.js</a></div>
+            <div>Inspired <i class="fas fa-heart"></i> by <a href="http://todomvc.com">TodoMVC</a></div>
+            <div>
+                <label>Name: </label>{{buildInformation.name}}
+            </div>
+            <div>
+                <label>Version: </label>{{buildInformation.version}}
+            </div>
+        </section>
     </div>
     <div v-if="activetab === 2" class="tabcontent">
         <section class="metadata" v-cloak>

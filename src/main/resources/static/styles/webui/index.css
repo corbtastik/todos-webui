@@ -235,24 +235,9 @@ body {
     background-color: #1D3879;
     color: #7EE1D3;
     padding: 10px 15px;
-    height: 20px;
+    height: 25px;
     text-align: center;
     border-top: 1px solid #0B243C;
-}
-
-.footer:before {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 50px;
-    overflow: hidden;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
-    0 8px 0 -3px #1D3879,
-    0 9px 1px -3px rgba(0, 0, 0, 0.2),
-    0 16px 0 -6px #1D3879,
-    0 17px 2px -6px rgba(0, 0, 0, 0.2);
 }
 
 .todo-count {
@@ -405,7 +390,7 @@ html .clear-completed:active {
     line-height: 2em;
     font-size: 18px;
     margin: 0;
-    padding: 0;
+    padding-top: 25px;
     list-style: none;
     background-color: #0B243C;
     color: #7EE1D3;
