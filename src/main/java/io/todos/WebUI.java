@@ -20,7 +20,6 @@ public class WebUI {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("user", "Nacho Libre");
         model.addAttribute("placeholder", placeholder);
         return "index";
     }

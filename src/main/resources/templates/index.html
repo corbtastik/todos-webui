@@ -5,24 +5,24 @@
       xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
-    <title>Vue.js • TodoMVC</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="js/spring-app-css/index.css">
+    <title>Vue.js • Todo(s) WebUI</title>
+    <link rel="stylesheet" href="styles/fontawesome/css/all.css">
+    <link rel="stylesheet" href="styles/webui/normalize.css">
+    <link rel="stylesheet" href="styles/webui/fonts.css">
+    <link rel="stylesheet" href="styles/webui/index.css">
     <style> [v-cloak] {
         display: none;
     } </style>
 </head>
 <body>
-<div id="todoapp">
+<div id="todoapp" class="todoapp" v-cloak>
     <div class="tabs">
         <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Todo(s)</a>
         <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]">Meta</a>
         <a v-on:click="activetab=3" v-bind:class="[ activetab === 3 ? 'active' : '' ]">About</a>
     </div>
     <div v-if="activetab === 1" class="tabcontent">
-        <section class="todoapp" v-cloak>
+        <section>
             <header>
                 <input id="new-todo" class="new-todo" autofocus autocomplete="off"
                        th:placeholder="${placeholder}"
@@ -50,10 +50,10 @@
                 </ul>
             </section>
             <footer class="footer" v-show="todos.length">
-            <span class="todo-count">
-                <strong v-text="remaining"></strong>
-                {{pluralize('item', remaining)}} left
-            </span>
+                <span class="todo-count">
+                    <strong v-text="remaining"></strong>
+                    {{pluralize('item', remaining)}} left
+                </span>
                 <ul class="filters">
                     <li><a href="#/all" :class="{selected: visibility == 'all'}">All</a></li>
                     <li><a href="#/active" :class="{selected: visibility == 'active'}">Active</a></li>
@@ -63,9 +63,9 @@
         </section>
     </div>
     <div v-if="activetab === 2" class="tabcontent">
-        <section class="metaapp" v-cloak>
+        <section class="metadata" v-cloak>
             <header>
-                <input id="filter-meta" class="filter-meta" autofocus autocomplete="off"
+                <input id="filter-metadata" class="filter-metadata" autofocus autocomplete="off"
                        placeholder="filter metadata"
                        v-model="metaSearch">
             </header>
@@ -79,13 +79,18 @@
         </section>
     </div>
     <div v-if="activetab === 3" class="tabcontent">
-        About this App
+        <section class="about-content">
+            <div>API enabled <a href="https://github.com/corbtastik/todos-webui">Todo WebUI</a></div>
+            <div>using <a href="https://spring.io/projects/spring-boot">Spring Boot</a> + <a href="https://vuejs.org">Vue.js</a></div>
+            <div>Inspired <i class="fas fa-heart"></i> by <a href="http://todomvc.com">TodoMVC</a></div>
+            <div>
+                <label>Name: </label>{{buildInformation.name}}
+            </div>
+            <div>
+                <label>Version: </label>{{buildInformation.version}}
+            </div>
+        </section>
     </div>
-    <footer class="info">
-        <p>Double-click to edit a todo</p>
-        <p>API enabled <a href="https://github.com/corbtastik/todos-webui">TodoMVC</a> app in Vue.js</p>
-        <p>Inspired by <a href="http://todomvc.com">TodoMVC</a></p>
-    </footer>
 </div>
 <script src="js/vue-resource/dist/vue-resource.min.js"></script>
 <script src="js/director/dist/director.js"></script>

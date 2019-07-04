@@ -1,5 +1,4 @@
 /*global Vue */
-
 (function (exports) {
     'use strict';
     Vue.use(VueResource);
@@ -27,6 +26,7 @@
         data: {
             todos: [],
             metadata: [],
+            buildInformation: {},
             newTodo: '',
             metaSearch: '',
             editedTodo: null,
@@ -158,15 +158,21 @@
             });
             Vue.http.get('/metadata').then(response => {
                 const list = JSON.parse(response.bodyText);
-                console.info(list);
                 list.forEach(item => {
                     self.metadata.push(item);
                 });
                 console.log("INFO /metadata loaded");
             }, response => {
                 if(response.status===404) {
-                    // metadata offline, save local only
                     console.log("WARN /metadata is offline");
+                }
+            });
+            Vue.http.get('/about').then(response => {
+                self.buildInformation = JSON.parse(response.bodyText);
+                console.log("INFO /about loaded");
+            }, response => {
+                if(response.status===404) {
+                    console.log("WARN /about is offline");
                 }
             });
         },
