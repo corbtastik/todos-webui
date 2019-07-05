@@ -1,5 +1,4 @@
 /*global Vue */
-
 (function (exports) {
     'use strict';
     Vue.use(VueResource);
@@ -26,17 +25,21 @@
         // app initial state
         data: {
             todos: [],
+            metadata: [],
+            buildInformation: {},
             newTodo: '',
+            metaSearch: '',
             editedTodo: null,
             visibility: 'all',
-            offline: false
+            offline: false,
+            activetab: 1
         },
         // watch todos change and save via API
         watch: {
             todos: {
                 deep: true,
                 handler: function(values) {
-                    let self = this;
+                    const self = this;
                     values.forEach(todo => {
                         if(todo.id && !self.offline) {
                             Vue.http.patch('/todos/' + todo.id,todo);
@@ -45,13 +48,11 @@
                 }
             }
         },
-        // computed properties
-        // http://vuejs.org/guide/computed.html
         computed: {
-            filteredTodos: function () {
+            filteredTodos() {
                 return filters[this.visibility](this.todos);
             },
-            remaining: function () {
+            remaining() {
                 return filters.active(this.todos).length;
             },
             allDone: {
@@ -63,6 +64,13 @@
                         todo.completed = value;
                     });
                 }
+            },
+            filteredMetadata() {
+                const searchFilter = meta =>
+                    meta.property.includes(this.metaSearch)
+                        ||
+                    meta.value.includes(this.metaSearch);
+                return this.metadata.filter(searchFilter);
             }
         },
         // methods that implement data logic.
@@ -96,7 +104,7 @@
                 }
             },
             removeTodo: function (todo) {
-                let self = this;
+                const self = this;
                 if(!self.offline) {
                     Vue.http.delete( '/todos/' + todo.id).then(() => {
                         const index = self.todos.indexOf(todo);
@@ -134,9 +142,9 @@
         },
         // run before mounting to see if API is enabled or not
         beforeMount() {
-            let self = this;
+            const self = this;
             Vue.http.get('/todos/').then(response => {
-                let list = JSON.parse(response.bodyText);
+                const list = JSON.parse(response.bodyText);
                 list.forEach(item => {
                     self.todos.unshift(item);
                 });
@@ -146,6 +154,25 @@
                     // api offline, save local only
                     console.log("WARN /todos is offline, saving local");
                     self.offline = true;
+                }
+            });
+            Vue.http.get('/metadata').then(response => {
+                const list = JSON.parse(response.bodyText);
+                list.forEach(item => {
+                    self.metadata.push(item);
+                });
+                console.log("INFO /metadata loaded");
+            }, response => {
+                if(response.status===404) {
+                    console.log("WARN /metadata is offline");
+                }
+            });
+            Vue.http.get('/about').then(response => {
+                self.buildInformation = JSON.parse(response.bodyText);
+                console.log("INFO /about loaded");
+            }, response => {
+                if(response.status===404) {
+                    console.log("WARN /about is offline");
                 }
             });
         },

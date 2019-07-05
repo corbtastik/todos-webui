@@ -29,7 +29,6 @@ public class WebUI {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("user", "Nacho Libre");
         model.addAttribute("placeholder", placeholder);
         return "index";
     }
@@ -39,6 +38,7 @@ public class WebUI {
         return http.authorizeExchange().anyExchange().permitAll().and().httpBasic().disable().csrf().disable().build();
     }
 }
+
 
 
 
