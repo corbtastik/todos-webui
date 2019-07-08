@@ -9,12 +9,12 @@
         },
         active: function (todos) {
             return todos.filter(function (todo) {
-                return !todo.completed;
+                return !todo.complete;
             });
         },
         completed: function (todos) {
             return todos.filter(function (todo) {
-                return todo.completed;
+                return todo.complete;
             });
         }
     };
@@ -61,7 +61,7 @@
                 },
                 set: function (value) {
                     this.todos.forEach(function (todo) {
-                        todo.completed = value;
+                        todo.complete = value;
                     });
                 }
             },
@@ -86,7 +86,7 @@
                 }
                 this.createTodo({
                     title: value,
-                    completed: false
+                    complete: false
                 });
                 this.newTodo = '';
             },
@@ -95,7 +95,7 @@
                 if(!self.offline) {
                     Vue.http.post('/todos/', {
                         title: todo.title,
-                        completed: todo.completed
+                        complete: todo.complete
                     }).then(response => {
                         self.todos.unshift(response.body);
                     });
@@ -116,7 +116,7 @@
                 }
             },
             editTodo: function (todo) {
-                if(todo.completed) {
+                if(todo.complete) {
                     return;
                 }
                 this.beforeEditCache = todo.title;
