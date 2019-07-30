@@ -27,9 +27,13 @@ public class WebUI {
 	@Value("${todos.webui.placeholder:cf push something?}")
 	private String placeholder;
 
+    @Value("${spring.security.user.name}")
+    private String username;
+
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("placeholder", placeholder);
+        model.addAttribute("username", username);
         return "index";
     }
 
