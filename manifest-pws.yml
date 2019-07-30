@@ -1,0 +1,10 @@
+---
+applications:
+- name: your-todos-webui
+  memory: 1G
+  path: target/todos-webui-1.0.0.SNAP.jar
+  services:
+  - your-todos-config
+  - your-todos-registry
+  env:
+    SPRING_APPLICATION_NAME: your-todos-webui
