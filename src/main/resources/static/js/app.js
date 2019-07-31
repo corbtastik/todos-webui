@@ -287,4 +287,5 @@
         router.init();
     })(app, Router);
 
+
 })(window);
