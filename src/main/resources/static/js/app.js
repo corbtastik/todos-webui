@@ -1,4 +1,5 @@
-/*global Vue */
+/*global app, Vue, VueResource, Logger, Router */
+
 (function (exports) {
     'use strict';
     Vue.use(VueResource);
@@ -266,5 +267,24 @@
             }
         }
     });
+
+    (function (app, Router) {
+        'use strict';
+        const router = new Router();
+        ['all', 'active', 'completed'].forEach(function (visibility) {
+            router.on(visibility, function () {
+                app.visibility = visibility;
+            });
+        });
+
+        router.configure({
+            notfound: function () {
+                window.location.hash = '';
+                app.visibility = 'all';
+            }
+        });
+
+        router.init();
+    })(app, Router);
 
 })(window);
