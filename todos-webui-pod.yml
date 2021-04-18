@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: todos-webui
+  name: todos-webui-external
+  namespace: arcade
+spec:
+  ports:
+    - nodePort: 30808
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: todos-webui
+  type: NodePort
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: todos-webui-config-map
+  namespace: arcade
+  labels:
+    app: todos-webui
+data:
+  TODOS_WEBUI_PLACEHOLDER: 'Mow the lawn'
+  TODOS_WEBUI_GREETING: 'Howdy'
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: todos-webui
+  namespace: arcade
+  labels:
+    app: todos-webui
+spec:
+  containers:
+    - name: todos-webui-container
+      image: corbsmartin/todos-webui:develop
+      imagePullPolicy: Always
+      envFrom:
+        - configMapRef:
+            name: todos-webui-config-map
