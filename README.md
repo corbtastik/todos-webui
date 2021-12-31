@@ -31,10 +31,4 @@ java -jar ./target/todos-webui-1.0.0.SNAP.jar \
   --server.port=whatever
 ``` 
 
-**WebUI running**
-
-<p align="center">
-    <img src="https://github.com/corbtastik/todos-images/raw/master/todos-webui/ui.png" width="640">
-</p>
-
 
