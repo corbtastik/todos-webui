@@ -8,7 +8,7 @@ spring:
       name: Bucky
 todos:
   webui:
-    placeholder: "Time to wash the dog?"
+    placeholder: "Learn Red Hat OpenShift"
 management:
   endpoints:
     web:
