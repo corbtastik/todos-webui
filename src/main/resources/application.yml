@@ -8,7 +8,7 @@ spring:
       name: Bucky
 todos:
   webui:
-    placeholder: "Learn Red Hat OpenShift"
+    placeholder: "Learn Podman!"
 management:
   endpoints:
     web:
