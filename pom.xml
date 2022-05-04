@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.3</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.13</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 	<groupId>io.todos</groupId>
 	<artifactId>todos-webui</artifactId>
 	<version>1.0.0.SNAP</version>
@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>11</java.version>
+        <jkube.version>1.7.0</jkube.version>
     </properties>
 
 	<dependencies>
@@ -54,11 +55,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-open-service-broker</artifactId>
+            <version>3.4.0-M2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 
     <repositories>
@@ -94,8 +105,69 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
 		</plugins>
 	</build>
 
+    <profiles>
+        <profile>
+            <id>openshift</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.eclipse.jkube</groupId>
+                        <artifactId>openshift-maven-plugin</artifactId>
+                        <version>${jkube.version}</version>
+                        <configuration>
+                            <resources>
+                                <labels>
+                                    <all>
+                                        <testProject>spring-boot-sample</testProject>
+                                    </all>
+                                </labels>
+                            </resources>
+
+                            <generator>
+                                <includes>
+                                    <include>spring-boot</include>
+                                </includes>
+                                <config>
+                                    <spring-boot>
+                                        <color>always</color>
+                                    </spring-boot>
+                                </config>
+                            </generator>
+                            <enricher>
+                                <excludes>
+                                    <exclude>jkube-expose</exclude>
+                                </excludes>
+                                <config>
+                                    <jkube-service>
+                                        <type>NodePort</type>
+                                    </jkube-service>
+                                </config>
+                            </enricher>
+                        </configuration>
+
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>resource</goal>
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
