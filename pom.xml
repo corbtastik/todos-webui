@@ -56,11 +56,6 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-open-service-broker</artifactId>
-            <version>3.4.0-M2</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -114,60 +109,66 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.eclipse.jkube</groupId>
+                <artifactId>openshift-maven-plugin</artifactId>
+                <version>${jkube.version}</version>
+            </plugin>
 		</plugins>
 	</build>
 
-    <profiles>
-        <profile>
-            <id>openshift</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.eclipse.jkube</groupId>
-                        <artifactId>openshift-maven-plugin</artifactId>
-                        <version>${jkube.version}</version>
-                        <configuration>
-                            <resources>
-                                <labels>
-                                    <all>
-                                        <testProject>spring-boot-sample</testProject>
-                                    </all>
-                                </labels>
-                            </resources>
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            <id>openshift</id>-->
+<!--            <build>-->
+<!--                <plugins>-->
+<!--                    <plugin>-->
+<!--                        <groupId>org.eclipse.jkube</groupId>-->
+<!--                        <artifactId>openshift-maven-plugin</artifactId>-->
+<!--                        <version>${jkube.version}</version>-->
+<!--                        <configuration>-->
+<!--                            <resources>-->
+<!--                                <labels>-->
+<!--                                    <all>-->
+<!--                                        <testProject>spring-boot-sample</testProject>-->
+<!--                                    </all>-->
+<!--                                </labels>-->
+<!--                            </resources>-->
 
-                            <generator>
-                                <includes>
-                                    <include>spring-boot</include>
-                                </includes>
-                                <config>
-                                    <spring-boot>
-                                        <color>always</color>
-                                    </spring-boot>
-                                </config>
-                            </generator>
-                            <enricher>
-                                <excludes>
-                                    <exclude>jkube-expose</exclude>
-                                </excludes>
-                                <config>
-                                    <jkube-service>
-                                        <type>NodePort</type>
-                                    </jkube-service>
-                                </config>
-                            </enricher>
-                        </configuration>
+<!--                            <generator>-->
+<!--                                <includes>-->
+<!--                                    <include>spring-boot</include>-->
+<!--                                </includes>-->
+<!--                                <config>-->
+<!--                                    <spring-boot>-->
+<!--                                        <color>always</color>-->
+<!--                                    </spring-boot>-->
+<!--                                </config>-->
+<!--                            </generator>-->
+<!--                            <enricher>-->
+<!--                                <excludes>-->
+<!--                                    <exclude>jkube-expose</exclude>-->
+<!--                                </excludes>-->
+<!--                                <config>-->
+<!--                                    <jkube-service>-->
+<!--                                        <type>NodePort</type>-->
+<!--                                    </jkube-service>-->
+<!--                                </config>-->
+<!--                            </enricher>-->
+<!--                        </configuration>-->
 
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>resource</goal>
-                                    <goal>build</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <goals>-->
+<!--                                    <goal>resource</goal>-->
+<!--                                    <goal>build</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+<!--                    </plugin>-->
+<!--                </plugins>-->
+<!--            </build>-->
+<!--        </profile>-->
+<!--    </profiles>-->
 </project>
