@@ -15,7 +15,7 @@
 	<description>Todos WebUI - Spring Boot + Vue.js + API enabled Todos app</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <jkube.version>1.7.0</jkube.version>
     </properties>
 
