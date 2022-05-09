@@ -15,7 +15,7 @@ public class WebUI {
 		SpringApplication.run(WebUI.class, args);
 	}
 
-	@Value("${todos.webui.placeholder:cf push something?}")
+	@Value("${todos.webui.placeholder:Take out trash?}")
 	private String placeholder;
 
     @Value("${spring.security.user.name}")

@@ -15,7 +15,7 @@
 <body>
 <div id="todoapp" class="todoapp" v-cloak>
     <div class="userinfo">
-        <span th:text="'Howdy ' + ${username}"></span>
+        <span th:text="'Howdy ' + ${username} + '!'"></span>
     </div>
     <div class="tabs">
         <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Todo(s)</a>
