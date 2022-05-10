@@ -24,8 +24,8 @@ button.destroy {
 
 body {
     line-height: 1.4em;
-    background: #0B243C;
-    color: #0B243C;
+    background: #011948;
+    color: #011948;
     min-width: 230px;
     max-width: 550px;
     margin: 0 auto;
@@ -50,26 +50,26 @@ body {
 
 .todoapp input::-webkit-input-placeholder {
     font-weight: 300;
-    color: #0B243C;
+    color: #011948;
 }
 
 .todoapp input::-moz-placeholder {
     font-weight: 300;
-    color: #0B243C;
+    color: #011948;
 }
 
 .todoapp input::-ms-input-placeholder {
     font-weight: 300;
-    color: #0B243C;
+    color: #011948;
 }
 
 .todoapp input::placeholder {
     font-weight: 300;
-    color: #0B243C;
+    color: #011948;
 }
 
 .userinfo {
-    background-color: #0B243C;
+    background-color: #011948;
     font-size: 20px;
     font-weight: bold;
     color: #7EE1D3;
@@ -130,7 +130,7 @@ body {
 .toggle-all + label:before {
     content: '❯';
     font-size: 22px;
-    color: #0B243C;
+    color: #011948;
     padding: 10px 27px 10px 27px;
 }
 
@@ -238,7 +238,7 @@ body {
     padding: 10px 15px;
     height: 25px;
     text-align: center;
-    border-top: 1px solid #0B243C;
+    border-top: 1px solid #011948;
 }
 
 .todo-count {
@@ -294,7 +294,7 @@ html .clear-completed:active {
 }
 
 .tabs {
-    background-color: #0B243C;
+    background-color: #011948;
     font-size: 24px;
     font-weight: bold;
     overflow: hidden;
@@ -312,17 +312,17 @@ html .clear-completed:active {
     cursor: pointer;
     padding: 12px 24px;
     transition: background-color 0.2s;
-    background-color: #0B243C;
-    color: #3E8575;
+    background-color: #011948;
+    color: #7EE1D3;
 }
 
 .tabs a:hover {
-    background-color: #0B243C;
+    background-color: #011948;
     color: #7EE1D3;
 }
 
 .tabs a.active {
-    background-color: #0B243C;
+    background-color: #011948;
     color: #E73462;
     cursor: default;
 }
@@ -376,11 +376,11 @@ html .clear-completed:active {
 }
 
 .highlight .property {
-    color: #1D3879;
+    color: #011948;
 }
 
 .highlight .value {
-    color: #3E8575;
+    color: #1D3879;
 }
 
 .highlight .eq {
@@ -393,7 +393,7 @@ html .clear-completed:active {
     margin: 0;
     padding-top: 25px;
     list-style: none;
-    background-color: #0B243C;
+    background-color: #011948;
     color: #7EE1D3;
     text-align: center;
 }
