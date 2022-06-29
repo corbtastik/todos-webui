@@ -23,32 +23,25 @@
     // ERROR, WARN, INFO, DEBUG, or TRACE
     const Logger = {
         error: function () {
-            const user = "Nacho";
-            this.callApi('ERROR', "UI(" + user + ")|" + arguments[0]);
+            this.callApi('ERROR', arguments[0]);
         },
         warn: function () {
-            const user = "Nacho";
-            this.callApi('WARN', "UI(" + user + ")|" + arguments[0]);
+            this.callApi('WARN', arguments[0]);
         },
         info: function () {
-            const user = "Nacho";
-            this.callApi('INFO', "UI(" + user + ")|" + arguments[0]);
+            this.callApi('INFO', arguments[0]);
         },
         debug: function () {
-            const user = "Nacho";
-            this.callApi('DEBUG', "UI(" + user + ")|" + arguments[0]);
+            this.callApi('DEBUG', arguments[0]);
         },
         trace: function () {
-            const user = "Nacho";
-            this.callApi('TRACE', "UI(" + user + ")|" + arguments[0]);
+            this.callApi('TRACE', arguments[0]);
         },
         callApi: function(level, line) {
             console.log(level.toUpperCase() + '|' + line);
             Vue.http.post('/logs', {
                 level: level.toUpperCase(),
                 line: line
-            }).then(response => {
-                console.log("/logs response " + response.statusText);
             });
         }
     };
@@ -70,21 +63,6 @@
             todosApiOnline: false,
             metadataApiOnline: false,
             aboutApiOnline: false
-        },
-        // watch todos change and save via API
-        watch: {
-            todos: {
-                deep: true,
-                handler: function(values) {
-                    const self = this;
-                    values.forEach(todo => {
-                        if(todo.id && self.todosApiOnline) {
-                            Logger.debug("watchTodos|Patching todo " + JSON.stringify(todo));
-                            Vue.http.patch('/todos/' + todo.id, todo);
-                        }
-                    });
-                }
-            }
         },
         computed: {
             filteredTodos() {
@@ -187,6 +165,11 @@
                     return;
                 }
                 Logger.debug("doneEdit|Editing complete " + this.editedTodo.title);
+                if(todo.id && self.todosApiOnline) {
+                    Logger.debug("doneEdit|Patching todo " + JSON.stringify(this.editedTodo));
+                    todo.title = this.editedTodo.title.trim();
+                    Vue.http.patch('/todos/' + todo.id, todo);
+                }
                 this.editedTodo = null;
                 todo.title = todo.title.trim();
                 if (!todo.title) {
@@ -286,6 +269,5 @@
 
         router.init();
     })(app, Router);
-
 
 })(window);
