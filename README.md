@@ -23,7 +23,7 @@ podman build -t todos-webui .
 ## Run via Java
 
 ```bash
-java -jar ./target/todos-webui-1.0.0.SNAP.jar \
+java -jar ./target/todos-webui-1.0.0.jar \
   --server.port=8000 \
   --spring.security.user.name="Sponge Bob" \
   --todos.webui.placeholder="Make bacon pancakes"

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.todos</groupId>
 	<artifactId>todos-webui</artifactId>
-	<version>1.0.0.SNAP</version>
+	<version>1.0.0</version>
 	<name>todos-webui</name>
 	<description>Todos WebUI - Spring Boot + Vue.js + API enabled Todos app</description>
 

@@ -10,6 +10,15 @@ todos:
   webui:
     placeholder: "Time to wash the dog?"
 management:
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
   endpoints:
     web:
       exposure:
