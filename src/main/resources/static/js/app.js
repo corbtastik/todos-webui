@@ -156,7 +156,7 @@
                     Logger.error("editTodo|Can't edit a complete todo amigo");
                     return;
                 }
-                Logger.debug("editTodo|Editing todos " + todo.title);
+                Logger.debug("editTodo|Editing todo " + todo.title);
                 this.beforeEditCache = todo.title;
                 this.editedTodo = todo;
             },
