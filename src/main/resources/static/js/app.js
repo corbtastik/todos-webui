@@ -66,11 +66,9 @@
         },
         computed: {
             filteredTodos() {
-                Logger.trace("filteredTodos|Filtering " + this.visibility + " todos.");
                 return filters[this.visibility](this.todos);
             },
             remaining() {
-                Logger.trace("remaining|Showing active todos");
                 return filters.active(this.todos).length;
             },
             allDone: {
@@ -78,15 +76,12 @@
                     return this.remaining === 0;
                 },
                 set: function (value) {
-                    Logger.debug("allDone|marking all todos complete");
                     this.todos.forEach(function (todo) {
-                        Logger.trace("allDone|marking todo " + todo.title + " complete");
                         todo.complete = value;
                     });
                 }
             },
             filteredMetadata() {
-                Logger.trace("filteredMetadata|Filtering metadata on " + this.metaSearch);
                 const searchFilter = meta =>
                     meta.property.includes(this.metaSearch)
                         ||
@@ -120,7 +115,7 @@
                         title: todo.title,
                         complete: todo.complete
                     }).then(response => {
-                        Logger.debug("createTodo|Response " + response.statusText);
+                        Logger.debug("createTodo|Response " + response.status);
                         self.todos.unshift(response.body);
                     });
                 } else {
@@ -146,10 +141,14 @@
                 }
             },
             toggleComplete: function (todo) {
+                const self = this;
                 Logger.info("toggleComplete|Toggling todo " + todo.title + " to "
-                    + (!todo.complete ? "complete " : "active")
-                );
+                    + (!todo.complete ? "complete " : "active"));
                 todo.complete = !todo.complete;
+                if(todo.id && self.todosApiOnline) {
+                    Logger.debug("toggleComplete|Patching todo " + JSON.stringify(this.editedTodo));
+                    Vue.http.patch('/todos/' + todo.id, todo);
+                }
             },
             editTodo: function (todo) {
                 if(todo.complete) {
@@ -161,6 +160,7 @@
                 this.editedTodo = todo;
             },
             doneEdit: function (todo) {
+                const self = this;
                 if (!this.editedTodo) {
                     return;
                 }
