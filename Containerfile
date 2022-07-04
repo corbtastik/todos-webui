@@ -1,7 +1,7 @@
 #--------------------------------------------------------------------------------------------------
 # Builder image
 #--------------------------------------------------------------------------------------------------
-FROM docker.io/library/maven:3.8-eclipse-temurin-11-focal as builder
+FROM docker.io/library/maven:3.8-eclipse-temurin-11-alpine as builder
 
 WORKDIR /workspace/app
 COPY pom.xml .
@@ -15,7 +15,7 @@ RUN mvn versions:set -DnewVersion=$APP_VERSION && \
 #--------------------------------------------------------------------------------------------------
 # Application image
 #--------------------------------------------------------------------------------------------------
-FROM docker.io/library/eclipse-temurin:11-jre-focal
+FROM docker.io/library/eclipse-temurin:11-jre-alpine
 
 VOLUME /tmp
 
